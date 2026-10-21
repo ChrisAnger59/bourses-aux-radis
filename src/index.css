@@ -1,0 +1,195 @@
+/* Rounded font, loaded from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+
+/* ─── Night palette: deep blue background, pastel accents ── */
+:root {
+    --night: #1b1f3b;         /* background, top */
+    --night-light: #2a2d58;   /* background, bottom */
+    --panel: #2f3366;         /* panels */
+    --panel-border: rgba(255, 255, 255, 0.08);
+
+    --cream: #f4ecd8;         /* main text */
+    --muted: #a9a6c9;         /* secondary text (lavender grey) */
+    --dark-ink: #22203a;      /* text on pastel backgrounds */
+
+    --mint: #9fe3c3;          /* titles, commands */
+    --lavender: #c3b5f2;      /* panel titles */
+    --butter: #f7dc8f;        /* price and timer */
+    --rose: #ef9bb5;          /* event banner */
+
+    --radius: 24px;
+    --shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    color: var(--cream);
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-size: 28px;
+    /* A few small stars over a night gradient */
+    background:
+        radial-gradient(2px 2px at 8% 12%, #fff8 50%, transparent 51%),
+        radial-gradient(2px 2px at 23% 6%, #fff6 50%, transparent 51%),
+        radial-gradient(3px 3px at 47% 9%, #fff7 50%, transparent 51%),
+        radial-gradient(2px 2px at 71% 4%, #fff6 50%, transparent 51%),
+        radial-gradient(2px 2px at 88% 14%, #fff8 50%, transparent 51%),
+        radial-gradient(2px 2px at 95% 40%, #fff5 50%, transparent 51%),
+        radial-gradient(2px 2px at 3% 55%, #fff5 50%, transparent 51%),
+        linear-gradient(var(--night), var(--night-light));
+    min-height: 100vh;
+}
+
+/* ─── Overall layout ─────────────────────────────────────── */
+.game {
+    min-height: 100vh;
+    padding: 40px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Shared look of every "card" */
+.stat,
+.panel,
+.end-screen {
+    background: var(--panel);
+    border: 2px solid var(--panel-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* ─── Header: title, price, timer ────────────────────────── */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-header h1 {
+    font-size: 64px;
+    color: var(--mint);
+}
+
+.stats {
+    display: flex;
+    gap: 24px;
+}
+
+.stat {
+    padding: 16px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 22px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.stat-value {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--butter);
+}
+
+/* ─── Event banner ───────────────────────────────────────── */
+.event-banner {
+    background: var(--rose);
+    color: var(--dark-ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 32px;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ─── Players and activity ───────────────────────────────── */
+.game-columns {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 32px;
+    min-height: 0;
+}
+
+.panel {
+    padding: 28px 36px;
+    overflow: hidden; /* many players: the list is cut instead of overflowing the screen */
+}
+
+.panel h2 {
+    font-size: 34px;
+    color: var(--lavender);
+    margin-bottom: 16px;
+}
+
+.panel ol,
+.panel ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.panel ol {
+    padding-left: 1.4em;
+}
+
+.panel ol li::marker {
+    color: var(--muted);
+}
+
+.panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Activity: older lines fade slightly */
+.panel ul li:not(:first-child) {
+    color: var(--muted);
+}
+
+/* ─── Commands reminder ──────────────────────────────────── */
+.commands {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.commands code {
+    background: var(--mint);
+    color: var(--dark-ink);
+    font-family: inherit;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 10px 28px;
+    box-shadow: var(--shadow);
+}
+
+/* ─── End screen ─────────────────────────────────────────── */
+.end-screen {
+    margin: auto;
+    padding: 56px 80px;
+    text-align: center;
+    font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.end-screen h2 {
+    font-size: 52px;
+    color: var(--butter);
+}
+
+.end-screen ol {
+    text-align: left;
+    padding-left: 1.4em;
+}
