@@ -1,4 +1,4 @@
-export const STARTING_BELLS = 1000;
+export const STARTING_BELLS = 10000;
 
 
 /**
