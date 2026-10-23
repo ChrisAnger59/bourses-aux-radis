@@ -8,7 +8,7 @@ export function PlayerList({ players }) {
         <section>
             <h2>👥 Joueurs ({ranking.length})</h2>
             {ranking.length === 0 ? (
-                <p>Tapez !achat 10 pour entrer dans la partie</p>
+                <p>Chaque joueuse / joueur débute la partie avec 10.000 clochettes !</p>
             ) : (
                 <ol>
                     {ranking.map((player) => (

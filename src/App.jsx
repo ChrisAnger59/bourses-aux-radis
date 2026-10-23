@@ -74,6 +74,8 @@ function App() {
                         <ActivityFeed feed={state.feed} />
                     </div>
 
+                    
+
                     <CommandsReminder />
                 </>
             )}
